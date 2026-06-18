@@ -294,217 +294,63 @@
 }
 
 /* ===========================
-   HEADLINE HERO
+   HERO SECTION
    =========================== */
-.headline-hero {
-  margin-top: 70px;
-  position: relative;
-  min-height: 100vh;
+.hero-section {
+  margin-top: 80px;
+  padding-bottom: 100px;
   display: flex;
-  align-items: center;
   justify-content: center;
+  background: transparent;
+  position: relative;
   overflow: hidden;
-  background: #A71919;
 }
 
-.headline-hero-content {
+.hero-section > .section-control {
   position: relative;
   z-index: 1;
+}
+
+.hero-content {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 80px 20px;
+  padding: 0 10px 10px;
 }
 
-.headline-hero-title + .headline-hero-subtitle-wrap {
-  width: 100%;
-  max-width: 1000px;
-  display: flex;
-  justify-content: center;
-}
-
-.headline-hero-title {
-  font-family: 'Bebas Neue', sans-serif;
-  font-size: clamp(60px, 11vw, 140px);
-  font-weight: 400;
-  line-height: 0.92;
-  color: #fff;
-  letter-spacing: -1px;
-  max-width: 1000px;
-  text-transform: uppercase;
-}
-
-.headline-highlight {
-  position: relative;
-  display: inline-block;
-}
-
-.headline-underline {
-  position: absolute;
-  left: 5%;
-  bottom: -6px;
-  width: 90%;
-  height: 12px;
-  pointer-events: none;
-  overflow: visible;
-}
-
-.headline-underline path {
-  stroke-dasharray: 300;
-  stroke-dashoffset: 300;
-  animation: underline-draw 1s cubic-bezier(0.22, 0.61, 0.36, 1) 0.6s forwards;
-}
-
-@keyframes underline-draw {
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-
-.headline-hero-subtitle {
-  font-family: 'Montserrat', sans-serif;
-  font-size: clamp(18px, 2.4vw, 26px);
-  font-weight: 500;
-  font-style: italic;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 750px;
-  line-height: 1.5;
-  margin-top: 24px;
-  margin-bottom: 40px;
-}
-
-/* --- Brain Orbit System --- */
-.brain-orbit-wrapper {
-  position: relative;
-  width: 120%;
-  max-width: 1200px;
-  aspect-ratio: 9/6;
+.hero-badge {
   margin-top: 50px;
+  margin-bottom: 30px;
 }
 
-.brain-orbits {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.brain-img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 110%;
-  filter: brightness(0) invert(1) opacity(0.9);
-  z-index: 1;
-}
-
-.orbit-icon {
-  position: absolute;
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  z-index: 2;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-}
-
-/* Icon 1: Moon - on orbit 1 (top-right) */
-.orbit-icon-1 {
-  background: var(--blue);
-  color: #fff;
-  top: 21%;
-  left: 82%;
-  animation: icon-fadein 0.6s 0.8s ease forwards, icon-pulse 3s 1.4s ease-in-out infinite;
-}
-
-/* Icon 3: Heartbeat - on orbit 1 (left-middle) */
-.orbit-icon-3 {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.75);
-  top: 54%;
-  left: 6%;
-  animation: icon-fadein 0.6s 1.2s ease forwards, icon-pulse 3s 2s ease-in-out infinite;
-}
-
-/* Icon 2: Wave Square - on orbit 2 (bottom-left) */
-.orbit-icon-2 {
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  color: rgba(255, 255, 255, 0.75);
-  top: 68%;
-  left: 24%;
-  animation: icon-fadein 0.6s 1s ease forwards, icon-pulse 3s 2.5s ease-in-out infinite;
-}
-
-/* Icon 4: Bed - on orbit 2 (right-middle) */
-.orbit-icon-4 {
-  background: var(--blue);
-  color: #fff;
-  top: 57%;
-  left: 90%;
-  animation: icon-fadein 0.6s 1.4s ease forwards, icon-pulse 3s 1s ease-in-out infinite;
-}
-
-@keyframes icon-fadein {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes icon-pulse {
-  0%, 100% { transform: translate(-50%, -50%) scale(1); }
-  50%      { transform: translate(-50%, -50%) scale(1.12); }
-}
-
-/* ===========================
-   HERO VIDEO SECTION
-   =========================== */
-.hero-video-section {
-  background: #1a1a1a;
-  padding: 80px 0 80px;
-  display: flex;
-  justify-content: center;
-  border-radius: 40px 40px 0 0;
-  margin-top: -30px;
-  position: relative;
-  z-index: 2;
-  box-shadow: 0 -40px 0 0 #A71919;
-}
-
-.hero-video-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  padding: 0 20px;
-}
-
-.hero-video-text {
+.hero-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(22px, 3vw, 36px);
+  font-size: 60px;
   font-weight: 600;
-  color: #fff;
-  max-width: 900px;
-  line-height: 1.4;
-  margin-bottom: 40px;
+  line-height: 63px;
+  background: linear-gradient(90deg, var(--red) 10%, var(--blue));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  width: 56%;
+  margin-bottom: 0;
 }
 
-.hero-video-text b {
-  font-weight: 800;
+.hero-subtitle {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--text-medium);
+  font-size: 22px;
+  width: 70%;
+  padding: 10px;
+  margin-top: -8px;
+  text-align: center;
 }
 
 .hero-video {
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
-  border-radius: 16px;
-  overflow: hidden;
+  max-width: 720px;
+  margin: 20px 0;
 }
 
 .video-placeholder {
@@ -2225,64 +2071,22 @@
    RESPONSIVE - MOBILE (768px)
    =========================== */
 @media (max-width: 768px) {
-  /* --- Headline Hero mobile --- */
-  .headline-hero {
-    min-height: auto;
+  /* --- Hero mobile --- */
+  .hero-section {
     margin-top: 0;
-    overflow: visible;
-    padding-top: 110px;
+    padding-top: 30px;
     padding-bottom: 60px;
   }
 
-  .headline-hero-content {
-    padding: 20px 16px 30px;
-  }
-
-  .headline-hero-title {
-    letter-spacing: 0;
-  }
-
-  .headline-hero-subtitle {
-    font-size: 16px;
-    margin-top: 16px;
-    margin-bottom: 24px;
-  }
-
-  .brain-orbit-wrapper {
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 40px;
-    overflow: visible;
-  }
-
-  .brain-img {
+  .hero-title {
+    font-size: 40px;
+    line-height: 1.1;
     width: 90%;
   }
 
-  .orbit-icon {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
-  }
-
-  .headline-underline {
-    height: 10px;
-    bottom: -4px;
-  }
-
-  .headline-hero-subtitle {
-    margin-bottom: 30px;
-  }
-
-  .brain-orbit-wrapper {
-    width: 100%;
-    margin-top: 30px;
-  }
-
-  .orbit-icon {
-    width: 45px;
-    height: 45px;
-    font-size: 17px;
+  .hero-subtitle {
+    font-size: 18px;
+    width: 90%;
   }
 
   /* --- Navbar mobile --- */
@@ -2323,20 +2127,9 @@
     padding: 12px 30px;
   }
 
-  /* --- Hero Video mobile --- */
-  .hero-video-section {
-    padding: 50px 16px 50px;
-    border-radius: 30px 30px 0 0;
-  }
-
-  .hero-video-text {
-    font-size: 20px;
-    margin-bottom: 24px;
-  }
-
+  /* --- Hero video mobile --- */
   .hero-video {
     max-width: 100%;
-    border-radius: 12px;
   }
 
   /* --- Sections paddings mobile --- */
@@ -2732,6 +2525,15 @@
    RESPONSIVE - SMALL MOBILE (480px)
    =========================== */
 @media (max-width: 480px) {
+  .hero-title {
+    font-size: 26px;
+    width: 100%;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
   .classes-title {
     font-size: 20px;
   }

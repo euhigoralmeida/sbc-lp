@@ -10,7 +10,6 @@ import './App.css'
 import Placeholder from './components/Placeholder'
 import DottedSurface from './components/DottedSurface'
 import logoSBC from './assets/logo-sbc.png'
-import brainSolo from './assets/brain-solo.png'
 import robsonImg from './assets/robson.png'
 
 const WHATSAPP_URL = '#'
@@ -97,46 +96,45 @@ function App() {
         </div>
       </nav>
 
-      {/* ===== HEADLINE HERO ===== */}
-      <section className="headline-hero">
-        <div className="section-control headline-hero-content">
-          <h1 className="headline-hero-title">ENQUANTO TODOS DORMEM, SUA CARREIRA PODE <span className="headline-highlight">DECOLAR<svg className="headline-underline" viewBox="0 0 200 12" preserveAspectRatio="none"><path d="M2 9 C50 2, 150 2, 198 8" stroke="var(--blue)" strokeWidth="4" strokeLinecap="round" fill="none" /></svg></span></h1>
-          <p className="headline-hero-subtitle">
-            Descubra a profissão que cresce silenciosamente no Brasil e forma especialistas disputados pelo mercado da saúde.
-          </p>
-          <a href="#planos" className="btn btn-primary btn-large">Quero começar minha carreira</a>
-          <div className="brain-orbit-wrapper">
-            <svg className="brain-orbits" viewBox="0 0 900 600" fill="none">
-              <ellipse cx="450" cy="300" rx="420" ry="170" stroke="rgba(255,255,255,0.12)" strokeWidth="1.2" transform="rotate(-12 450 300)" />
-              <ellipse cx="450" cy="300" rx="380" ry="200" stroke="rgba(255,255,255,0.08)" strokeWidth="1.2" transform="rotate(18 450 300)" />
-            </svg>
-            <img src={brainSolo} alt="Cérebro" className="brain-img" />
-            <div className="orbit-icon orbit-icon-1" title="Sono">
-              <i className="fas fa-moon"></i>
-            </div>
-            <div className="orbit-icon orbit-icon-2" title="Ondas cerebrais">
-              <i className="fas fa-wave-square"></i>
-            </div>
-            <div className="orbit-icon orbit-icon-3" title="Monitoramento">
-              <i className="fas fa-heartbeat"></i>
-            </div>
-            <div className="orbit-icon orbit-icon-4" title="Polissonografia">
-              <i className="fas fa-bed"></i>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ===== HERO VIDEO ===== */}
-      <section className="hero-video-section">
+      {/* ===== HERO ===== */}
+      <section className="hero-section">
+        <DottedSurface />
         <div className="section-control">
-          <div className="hero-video-content">
-            <p className="hero-video-text">
-              Assista ao vídeo abaixo e descubra por que se tornar Técnico em Polissonografia é o primeiro passo para <b>transformar sua carreira:</b>
+          <div className="hero-content">
+            <div className="hero-reviews">
+              <div className="review-avatars">
+                {[
+                  { initial: 'M', color: '#8B2E2E' },
+                  { initial: 'R', color: '#6B3A2A' },
+                  { initial: 'C', color: '#4A7A3A' },
+                  { initial: 'A', color: '#8B2E2E' },
+                  { initial: 'L', color: '#6B3A2A' },
+                ].map((a, i) => (
+                  <div key={i} className="review-avatar" style={{ background: a.color }}>{a.initial}</div>
+                ))}
+              </div>
+              <div className="review-stars">
+                {'★★★★★'.split('').map((s, i) => <span key={i} className="star">{s}</span>)}
+                <span className="review-score">4.9</span>
+              </div>
+              <p className="review-count">(487 avaliações)</p>
+            </div>
+            <h2 className="hero-title">Especialista em qualidade do sono</h2>
+            <p className="hero-subtitle">
+              Descubra como a Sono Brasil Consultoria pode transformar suas noites e melhorar sua qualidade de vida com tratamentos baseados em evidências científicas.
             </p>
             <div className="hero-video">
-              <Placeholder width={720} height={405} text="" style={{ borderRadius: 16, maxWidth: '100%', aspectRatio: '16/9' }} />
+              <div className="video-placeholder">
+                <Placeholder width={720} height={360} text="" style={{ borderRadius: 16, maxWidth: '100%', aspectRatio: '16/9' }} />
+                <div className="video-play-overlay">
+                  <div className="video-play-btn">
+                    <i className="fas fa-play"></i>
+                  </div>
+                  <p className="video-play-label">Vídeo Institucional</p>
+                </div>
+              </div>
             </div>
+            <a href="#planos" className="btn btn-primary btn-large">Quero dormir melhor</a>
           </div>
         </div>
       </section>
