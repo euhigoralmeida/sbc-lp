@@ -23,3 +23,6 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
+
+# Config local do Claude Code (contem caminhos absolutos desta maquina)
+.claude
