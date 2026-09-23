@@ -1,0 +1,19 @@
+Vídeo do hero da landing page.
+
+Arquivo em uso: hero.mp4
+  540x960 (9:16) · 3min08s · H.264 + AAC · ~9,6 MB · faststart
+
+Comprimido a partir do original de 28 MB (720x1280, 1,25 Mbps) com:
+
+  ffmpeg -i original.mp4 -c:v libx264 -preset slow -crf 32 \
+    -pix_fmt yuv420p -vf "scale=540:-2" -movflags +faststart \
+    -c:a aac -b:a 64k -ac 2 hero.mp4
+
+Para trocar o vídeo, basta substituir hero.mp4 por outro arquivo com o
+mesmo nome. Qualquer proporção funciona (vertical, horizontal ou
+quadrada): o player se ajusta sozinho e nunca passa de 68% da altura da
+tela. Se o arquivo não existir, o hero volta para o placeholder antigo
+sem quebrar a página.
+
+Capa (opcional): coloque hero-poster.jpg nesta pasta e preencha
+HERO_VIDEO_POSTER em src/App.jsx.

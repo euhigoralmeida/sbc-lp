@@ -31,6 +31,15 @@
   position: relative;
 }
 
+/* Âncoras da navbar: evita que o topo fixo cubra o título da seção */
+#para-quem,
+#o-que-aprende,
+#modulos,
+#quem-ensina,
+#planos {
+  scroll-margin-top: 96px;
+}
+
 /* --- Dotted Surface (Hero only) --- */
 .dotted-surface {
   position: absolute;
@@ -243,6 +252,7 @@
   display: flex;
   justify-content: center;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+  transition: background 0.35s ease, box-shadow 0.35s ease, padding 0.35s ease;
 }
 
 .navbar-inner {
@@ -251,19 +261,112 @@
   justify-content: space-between;
   min-height: 60px;
   padding: 0 20px;
+  width: 100%;
+  max-width: 1200px;
+  gap: 24px;
+  border-radius: 0;
+  transition: min-height 0.35s ease, padding 0.35s ease, max-width 0.35s ease,
+    background 0.35s ease, border-radius 0.35s ease, box-shadow 0.35s ease, gap 0.35s ease;
 }
 
 .navbar-logo {
-  flex: 2 1 0%;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   padding: 6px 10px;
+  transition: padding 0.35s ease;
 }
 
 .logo-img {
   height: 60px;
   width: auto;
   display: block;
+  transition: height 0.35s ease;
+}
+
+/* --- Links centrais --- */
+.navbar-links {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 34px;
+  transition: gap 0.35s ease;
+}
+
+.navbar-link {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-medium);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 0.25s ease, font-size 0.35s ease;
+}
+
+.navbar-link:hover {
+  color: var(--blue);
+}
+
+/* ===========================
+   NAVBAR ENCOLHIDA (scroll)
+   =========================== */
+.navbar.is-shrunk {
+  background: transparent;
+  box-shadow: none;
+  padding: 12px 16px;
+}
+
+.navbar.is-shrunk .navbar-inner {
+  min-height: 56px;
+  max-width: max-content;
+  padding: 0 14px 0 18px;
+  gap: 28px;
+  background: rgba(15, 27, 45, 0.92);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-radius: 999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+}
+
+.navbar.is-shrunk .navbar-logo {
+  padding: 0;
+}
+
+.navbar.is-shrunk .logo-img {
+  height: 34px;
+}
+
+.navbar.is-shrunk .navbar-link {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.navbar.is-shrunk .navbar-link:hover {
+  color: #fff;
+}
+
+.navbar.is-shrunk .navbar-actions {
+  padding: 0;
+}
+
+.navbar.is-shrunk .navbar-actions .btn-primary {
+  padding: 9px 22px;
+  font-size: 14px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .navbar,
+  .navbar-inner,
+  .navbar-logo,
+  .logo-img,
+  .navbar-links,
+  .navbar-link,
+  .navbar-actions,
+  .navbar-actions .btn-primary {
+    transition: none;
+  }
 }
 
 .logo-footer {
@@ -272,12 +375,17 @@
 }
 
 .navbar-actions {
-  flex: 1 1 0%;
+  flex: 0 0 auto;
   display: flex;
   align-items: center;
   justify-content: flex-end;
   gap: 10px;
   padding: 10px;
+  transition: padding 0.35s ease;
+}
+
+.navbar-actions .btn-primary {
+  transition: padding 0.35s ease, font-size 0.35s ease;
 }
 
 .nav-link-student {
@@ -351,6 +459,21 @@
   width: 100%;
   max-width: 720px;
   margin: 20px 0;
+  display: flex;
+  justify-content: center;
+}
+
+/* Vídeo do hero: se adapta ao formato do arquivo (vertical ou horizontal)
+   sem estourar a altura da dobra. */
+.hero-video-el {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: 68vh;
+  border-radius: 16px;
+  background: var(--navy);
+  box-shadow: 0 12px 40px rgba(15, 27, 45, 0.28);
+  display: block;
 }
 
 .video-placeholder {
@@ -2089,6 +2212,11 @@
     width: 90%;
   }
 
+  .hero-video-el {
+    max-height: 60vh;
+    border-radius: 12px;
+  }
+
   /* --- Navbar mobile --- */
   .navbar {
     padding: 3px 0;
@@ -2097,10 +2225,29 @@
   .navbar-inner {
     padding: 0 12px;
     min-height: 56px;
+    gap: 8px;
+  }
+
+  .navbar-links {
+    display: none;
   }
 
   .logo-img {
     height: 42px;
+  }
+
+  .navbar.is-shrunk {
+    padding: 8px 10px;
+  }
+
+  .navbar.is-shrunk .navbar-inner {
+    min-height: 48px;
+    max-width: 100%;
+    padding: 0 8px 0 12px;
+  }
+
+  .navbar.is-shrunk .logo-img {
+    height: 30px;
   }
 
   .navbar-actions {

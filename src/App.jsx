@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Pagination } from 'swiper/modules'
 import 'swiper/css'
@@ -11,6 +11,19 @@ import Placeholder from './components/Placeholder'
 import DottedSurface from './components/DottedSurface'
 import logoSBC from './assets/logo-sbc.png'
 import robsonImg from './assets/robson.png'
+
+const NAV_LINKS = [
+  { label: 'Para quem é', href: '#para-quem' },
+  { label: 'O que você aprende', href: '#o-que-aprende' },
+  { label: 'Módulos', href: '#modulos' },
+  { label: 'Quem ensina', href: '#quem-ensina' },
+  { label: 'Planos', href: '#planos' },
+]
+
+// Vídeo do hero: coloque o arquivo em public/video/hero.mp4
+// (opcional) uma imagem de capa em public/video/hero-poster.jpg e preencha HERO_VIDEO_POSTER
+const HERO_VIDEO_SRC = '/video/hero.mp4'
+const HERO_VIDEO_POSTER = null
 
 const WHATSAPP_URL = '#'
 const CLIENT_URL = '#'
@@ -81,17 +94,31 @@ function CheckItem({ text }) {
 function App() {
   const [activeService, setActiveService] = useState('diagnostico')
   const [showCheckoutModal, setShowCheckoutModal] = useState(false)
+  const [navShrunk, setNavShrunk] = useState(false)
+  const [heroVideoIndisponivel, setHeroVideoIndisponivel] = useState(false)
+
+  useEffect(() => {
+    const onScroll = () => setNavShrunk(window.scrollY > 60)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <div className="page-wrapper">
       {/* ===== NAVBAR ===== */}
-      <nav className="navbar">
-        <div className="navbar-inner section-control">
+      <nav className={navShrunk ? 'navbar is-shrunk' : 'navbar'}>
+        <div className="navbar-inner">
           <div className="navbar-logo">
             <img src={logoSBC} alt="Sono Brasil Consultoria" className="logo-img" />
           </div>
+          <div className="navbar-links">
+            {NAV_LINKS.map((l) => (
+              <a key={l.href} href={l.href} className="navbar-link">{l.label}</a>
+            ))}
+          </div>
           <div className="navbar-actions">
-            <a href="#planos" className="btn btn-primary">Assinar</a>
+            <a href="#planos" className="btn btn-primary">Quero Me Especializar</a>
           </div>
         </div>
       </nav>
@@ -124,17 +151,31 @@ function App() {
               Descubra como a Sono Brasil Consultoria pode transformar suas noites e melhorar sua qualidade de vida com tratamentos baseados em evidências científicas.
             </p>
             <div className="hero-video">
-              <div className="video-placeholder">
-                <Placeholder width={720} height={360} text="" style={{ borderRadius: 16, maxWidth: '100%', aspectRatio: '16/9' }} />
-                <div className="video-play-overlay">
-                  <div className="video-play-btn">
-                    <i className="fas fa-play"></i>
+              {heroVideoIndisponivel ? (
+                <div className="video-placeholder">
+                  <Placeholder width={720} height={360} text="" style={{ borderRadius: 16, maxWidth: '100%', aspectRatio: '16/9' }} />
+                  <div className="video-play-overlay">
+                    <div className="video-play-btn">
+                      <i className="fas fa-play"></i>
+                    </div>
+                    <p className="video-play-label">Vídeo Institucional</p>
                   </div>
-                  <p className="video-play-label">Vídeo Institucional</p>
                 </div>
-              </div>
+              ) : (
+                <video
+                  className="hero-video-el"
+                  src={HERO_VIDEO_SRC}
+                  poster={HERO_VIDEO_POSTER || undefined}
+                  playsInline
+                  controls
+                  preload="metadata"
+                  onError={() => setHeroVideoIndisponivel(true)}
+                >
+                  Seu navegador não suporta vídeo HTML5.
+                </video>
+              )}
             </div>
-            <a href="#planos" className="btn btn-primary btn-large">Quero dormir melhor</a>
+            <a href="#planos" className="btn btn-primary btn-large">Quero Me Especializar</a>
           </div>
         </div>
       </section>
@@ -168,13 +209,13 @@ function App() {
               </div>
             </div>
 
-            <a href="#planos" className="btn btn-primary btn-large">Agende sua avaliação</a>
+            <a href="#planos" className="btn btn-primary btn-large">Quero Me Especializar</a>
           </div>
         </div>
       </section>
 
       {/* ===== TARGET AUDIENCE ===== */}
-      <section className="audience-section">
+      <section className="audience-section" id="para-quem">
         <div className="section-control">
           <h2 className="audience-title">O curso técnico em polissonografia é <span className="text-accent">indicado para</span></h2>
           <div className="audience-grid">
@@ -204,7 +245,7 @@ function App() {
       </section>
 
       {/* ===== COURSE MODULES ===== */}
-      <section className="course-section">
+      <section className="course-section" id="o-que-aprende">
         <div className="section-control">
           <h2 className="course-title">O que você vai <span className="text-accent">aprender</span></h2>
           <p className="course-sub">Uma formação completa em polissonografia, da teoria à prática clínica.</p>
@@ -212,38 +253,38 @@ function App() {
             {[
               {
                 num: '01',
-                title: 'MÓDULO 1 — A TECNOLOGIA DO SONO',
-                lessons: '5 Aulas',
-                text: 'Conheça todos os elementos que envolvem a rotina de um serviço de polissonografia e o preparo do paciente para um exame segundo as recomendações da AASM (Academia Americana de Medicina do Sono).',
+                title: 'MÓDULO 1 — FUNDAMENTOS TÉCNICOS DA POLISSONOGRAFIA',
+                lessons: '1 Aula',
+                text: 'Entenda a polissonografia como registro multicanal: a estrutura do laboratório do sono, o preparo do paciente e a rotina do plantão. Domine toda a cadeia do sinal, de sensores e eletrodos à impedância, amplificação e filtros, além da calibração biológica e da documentação técnica do exame.',
                 icon: 'fas fa-microchip',
               },
               {
                 num: '02',
-                title: 'MÓDULO 2 — NEUROANATOMIA E RITMOS CEREBRAIS',
-                lessons: '4 Aulas',
-                text: 'Aprenda sobre os neurotransmissores envolvidos na vigília e sono, os ritmos cerebrais e como identificar os estágios do sono (estagiamento do sono na polissonografia).',
-                icon: 'fas fa-brain',
+                title: 'MÓDULO 2 — POLISSONOGRAFIA NA PRÁTICA: TECNOLOGIA, AMBIENTE E SINAIS',
+                lessons: '1 Aula',
+                text: 'Percorra a evolução da tecnologia do sono, do EEG em papel ao registro digital, e conheça o laboratório por dentro. Saiba o que cada sensor mede, como se diferenciam os exames de tipo I a IV, o que fazer no controle de qualidade durante a noite e onde o técnico decide a validade do exame.',
+                icon: 'fas fa-wave-square',
               },
               {
                 num: '03',
-                title: 'MÓDULO 3 — O SONO E A RESPIRAÇÃO',
-                lessons: '3 Aulas',
-                text: 'Aprenda sobre os principais distúrbios respiratórios do sono e como é realizada uma polissonografia com uso de CPAP.',
+                title: 'MÓDULO 3 — SONO E RESPIRAÇÃO',
+                lessons: '1 Aula',
+                text: 'Domine o ciclo da apneia obstrutiva, do colapso da via aérea ao microdespertar, e entenda o CPAP como tala pneumática. Aprenda a aclimatar o paciente, controlar máscara e vazamento, conduzir a titulação manual pelos critérios da AASM, saber quando o binível entra e avaliar a qualidade final da titulação.',
                 icon: 'fas fa-lungs',
               },
               {
                 num: '04',
-                title: 'MÓDULO 4 — MÉTODOS DIAGNÓSTICOS',
-                lessons: '4 Aulas',
-                text: 'Conheça os critérios para a realização de diversos tipos de exames: Teste de Manutenção da Vigília, Teste de Latências Múltiplas do Sono, polissonografia split-night, Polissonografia com CPAP, entre outros.',
-                icon: 'fas fa-stethoscope',
+                title: 'MÓDULO 4 — LEITURA TÉCNICA DOS SINAIS DA POLISSONOGRAFIA',
+                lessons: '1 Aula',
+                text: 'Aprenda a ler a tela do exame com critério: quais canais definem o estágio do sono e quais apenas explicam o que acontece nele. Domine a medição da cabeça, a montagem de EEG, EOG e EMG, os sensores respiratórios e, principalmente, como separar um evento fisiológico real de um artefato.',
+                icon: 'fas fa-chart-line',
               },
               {
                 num: '05',
-                title: 'MÓDULO 5 — POLISSONOGRAFIA NA PRÁTICA',
-                lessons: '5 Plantões Práticos',
-                text: 'Vivencie a rotina de um serviço diagnóstico especializado em polissonografias com a realização de 5 plantões práticos supervisionados.',
-                icon: 'fas fa-user-md',
+                title: 'MÓDULO 5 — RITMOS CEREBRAIS, ESTÁGIOS DO SONO E RECONHECIMENTO VISUAL NA POLISSONOGRAFIA',
+                lessons: '1 Aula',
+                text: 'Treine o olho para a tela: frequência, amplitude e os ritmos delta, teta, alfa e beta. Aprenda a reconhecer vigília, N1, N2, N3 e REM lendo EEG, EOG e EMG em conjunto, a identificar fusos e complexos K, e a usar isso para decidir quando entrar no quarto e quando é melhor esperar.',
+                icon: 'fas fa-brain',
               },
             ].map((mod, i) => (
               <div className="course-module" key={i}>
@@ -265,14 +306,14 @@ function App() {
       </section>
 
       {/* ===== MODULES SHOWCASE ===== */}
-      <section className="modules-showcase">
+      <section className="modules-showcase" id="modulos">
         <div className="modules-showcase-inner">
           <div className="modules-showcase-text">
             <h2 className="modules-showcase-title">Dominar a polissonografia <span className="text-accent-light">transforma sua carreira.</span></h2>
             <p className="modules-showcase-desc">A medicina do sono é uma das áreas que mais cresce no Brasil. Profissionais qualificados em polissonografia são escassos e altamente valorizados no mercado.</p>
             <p className="modules-showcase-highlight">Cada módulo foi pensado para te levar do zero à prática clínica com confiança.</p>
             <p className="modules-showcase-desc">É por isso que o curso reúne <strong>5 módulos completos</strong> para formar profissionais preparados, atualizados e prontos para atuar com excelência em qualquer serviço diagnóstico do país.</p>
-            <a href="#planos" className="btn btn-red btn-large">Quero me especializar</a>
+            <a href="#planos" className="btn btn-red btn-large">Quero Me Especializar</a>
           </div>
 
           <div className="modules-showcase-cards">
@@ -286,11 +327,11 @@ function App() {
                 breakpoints={{ 0: { slidesPerView: 1 }, 500: { slidesPerView: 2 }, 900: { slidesPerView: 3 }, 1200: { slidesPerView: 4 } }}
               >
                 {[
-                  { title: 'A Tecnologia do Sono', tag: 'MÓDULO 1', lessons: '5 aulas' },
-                  { title: 'Neuroanatomia e Ritmos Cerebrais', tag: 'MÓDULO 2', lessons: '4 aulas' },
-                  { title: 'O Sono e a Respiração', tag: 'MÓDULO 3', lessons: '3 aulas' },
-                  { title: 'Métodos Diagnósticos', tag: 'MÓDULO 4', lessons: '4 aulas' },
-                  { title: 'Polissonografia na Prática', tag: 'MÓDULO 5', lessons: '5 plantões' },
+                  { title: 'Fundamentos Técnicos da Polissonografia', tag: 'MÓDULO 1', lessons: '1 aula' },
+                  { title: 'Polissonografia na Prática: Tecnologia, Ambiente e Sinais', tag: 'MÓDULO 2', lessons: '1 aula' },
+                  { title: 'Sono e Respiração', tag: 'MÓDULO 3', lessons: '1 aula' },
+                  { title: 'Leitura Técnica dos Sinais da Polissonografia', tag: 'MÓDULO 4', lessons: '1 aula' },
+                  { title: 'Ritmos Cerebrais, Estágios do Sono e Reconhecimento Visual na Polissonografia', tag: 'MÓDULO 5', lessons: '1 aula' },
                 ].map((mod, i) => (
                   <SwiperSlide key={i}>
                     <div className="mod-show-card">
@@ -324,7 +365,7 @@ function App() {
             <p className="pricing-installment">12x de</p>
             <p className="pricing-price">R$ 49,90</p>
             <a className="btn btn-red btn-checkout" onClick={(e) => { e.preventDefault(); setShowCheckoutModal(true) }} href="#">
-              QUERO ME ESPECIALIZAR
+              Quero Me Especializar
             </a>
             <p className="pricing-annual">ou R$ 497,00 / ano à vista</p>
           </div>
@@ -343,7 +384,7 @@ function App() {
       </section>
 
       {/* ===== BIO ===== */}
-      <section className="bio-section">
+      <section className="bio-section" id="quem-ensina">
         <div className="section-control bio-inner">
           <div className="bio-text">
             <h2>Conheça o diretor clínico da <span className="text-accent">Sono Brasil Consultoria</span></h2>
@@ -370,7 +411,7 @@ function App() {
                 <Placeholder key={i} width={350} height={420} text="" style={{ borderRadius: 15 }} />
               ))}
             </div>
-            <a href="#planos" className="btn btn-primary btn-large">Agendar minha consulta</a>
+            <a href="#planos" className="btn btn-primary btn-large">Quero Me Especializar</a>
           </div>
         </div>
       </section>
