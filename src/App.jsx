@@ -402,8 +402,8 @@ function App() {
       <section className="bio-section" id="quem-ensina">
         <div className="section-control bio-inner">
           <div className="bio-text">
-            <h2>Conheça o diretor clínico da <span className="text-accent">Sono Brasil Consultoria</span></h2>
-            <p>O Dr. Robson dirige clinicamente a Sono Brasil Consultoria e passou os últimos 15 anos dentro de laboratórios do sono, montando serviços, treinando equipes e acompanhando exames noite após noite.</p>
+            <h2>Conheça <span className="text-accent">Robson Martins</span></h2>
+            <p>Robson Martins está à frente da Sono Brasil Consultoria e passou os últimos 15 anos dentro de laboratórios do sono, montando serviços, treinando equipes e acompanhando exames noite após noite.</p>
             <p>É essa rotina que sustenta cada módulo do curso. Você aprende o que funciona no plantão, onde os erros costumam aparecer e como reconhecer um exame que vai se perder antes que ele se perca.</p>
             <h3 className="bio-subtitle">Há 15 anos inspirando com conhecimento</h3>
             <p>Nestes 15 anos de atuação com consultoria especializada em polissonografia, percebemos o quão desafiador pode ser para serviços diagnósticos fora do eixo sudeste do Brasil conseguirem manter seus profissionais qualificados e atualizados. Sabendo disso nasceu em nós o desejo de contribuir com a qualificação profissional dos que atuam como técnicos em polissonografia.</p>
@@ -411,7 +411,7 @@ function App() {
             <p>Temos orgulho do nosso trabalho e também de saber que com nossa expertise contribuímos todos os dias para o exercício fidedigno da medicina do sono. Acreditamos que para isso, mão de obra qualificada é essencial. <strong>Humanismo Sempre!</strong></p>
           </div>
           <div className="bio-img">
-            <img src={robsonImg} alt="Diretor Clínico - Dr. Robson" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
+            <img src={robsonImg} alt="Robson Martins" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'top' }} />
           </div>
         </div>
       </section>
