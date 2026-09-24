@@ -47,8 +47,9 @@ const NAV_LINKS = [
 const HERO_VIDEO_SRC = '/video/hero.mp4'
 const HERO_VIDEO_POSTER = null
 
-const WHATSAPP_URL = '#'
+const WHATSAPP_URL = 'https://wa.me/5511966346934'
 const CLIENT_URL = '#'
+const CHECKOUT_URL = 'https://chk.eduzz.com/40QR1GPK9B'
 
 const serviceButtons = [
   { key: 'diagnostico', label: 'DIAGNÓSTICO' },
@@ -65,11 +66,11 @@ const serviceButtons2 = [
 ]
 
 const faqData = [
-  { q: 'Qual é o Investimento do curso?', a: 'R$ 97,00 em pagamento único, com acesso a todos os 5 módulos da formação. Não há mensalidade nem cobrança recorrente.' },
+  { q: 'Qual é o Investimento do curso?', a: '12x de R$ 51,40 no cartão ou R$ 497,00 à vista, com acesso a todos os 5 módulos da formação. Não há mensalidade nem cobrança recorrente.' },
   { q: 'O Que Faz um Técnico em Polissonografia?', a: 'O Técnico em Polissonografia é o profissional que deve ser habilitado para trabalhar com o uso de ferramentas diagnósticas e terapêuticas auxiliando em estudos do sono de seres humanos. Geralmente trabalha em plantões noturnos de 12 horas. A média salarial inicial varia entre R$1.700,00 a R$2.200,00 em São Paulo. Com a crescente demanda por mão de obra qualificada, àqueles que se destacam não faltam oportunidades e para quem busca crescimento profissional saiba que nesta área o estudo constante é fundamental. Manter-se atualizado é uma exigência nos dias atuais para que você garanta uma boa prática da medicina do sono.' },
   { q: 'Como Funciona o Acesso às Aulas?', a: 'O curso é 100% online e as aulas são gravadas. Assim que o pagamento é aprovado, você recebe acesso aos 5 módulos e estuda no seu próprio ritmo, de onde quiser e quantas vezes precisar.' },
   { q: 'O Certificado é Válido em Qualquer Instituição?', a: 'Sim. A maioria dos laboratórios procuram contratar profissionais que possuam certificado de técnico em Polissonografia. Recomendamos aos alunos, após adquirirem experiência prática no mercado de trabalho, que realizem a prova de habilitação para técnicos em polissonografia junto a ABSono.' },
-  { q: 'Quais São os Métodos de Pagamento Aceitos?', a: 'Cartão de crédito, PIX, boleto bancário ou transferência. O acesso é liberado assim que o pagamento é confirmado.' },
+  { q: 'Quais São os Métodos de Pagamento Aceitos?', a: 'Cartão de crédito em até 12x, PIX ou boleto bancário. O acesso é liberado assim que o pagamento é confirmado.' },
 ]
 
 const servicosBase = [
@@ -113,7 +114,6 @@ function CheckItem({ text }) {
 
 function App() {
   const [activeService, setActiveService] = useState('diagnostico')
-  const [showCheckoutModal, setShowCheckoutModal] = useState(false)
   const [navShrunk, setNavShrunk] = useState(false)
   const [heroVideoIndisponivel, setHeroVideoIndisponivel] = useState(false)
   const [prefereMenosMovimento, setPrefereMenosMovimento] = useState(false)
@@ -157,7 +157,7 @@ function App() {
         <DottedSurface />
         <div className="section-control">
           <div className="hero-content">
-            <h2 className="hero-title">Aprenda polissonografia antes que a concorrência apareça</h2>
+            <h2 className="hero-title">Aprenda Polissonografia: a profissão inexplorada com alta demanda e baixa concorrência</h2>
             <p className="hero-subtitle">
               Polissonografia é uma das áreas da saúde com menos concorrência qualificada no Brasil. Aprenda com quem já capacitou serviços em sete estados.
             </p>
@@ -365,16 +365,24 @@ function App() {
       <section className="pricing-section" id="planos">
         <div className="section-control">
           <h2 className="pricing-headline">Invista na sua carreira em <br /><span className="text-accent">medicina do sono</span></h2>
-          <p className="pricing-intro-top">Ao final dos 5 módulos você monta o exame, reconhece os estágios do sono na tela e conduz uma noite inteira de polissonografia com segurança. É a base que um laboratório espera de quem contrata, e é o mesmo conteúdo que usamos para capacitar as equipes dos serviços que atendemos pelo Brasil. O primeiro salário da profissão cobre esse valor mais de quinze vezes.</p>
+          <p className="pricing-intro-top">Em 5 módulos você aprende a conduzir um exame completo de polissonografia, com o mesmo conteúdo que usamos para capacitar laboratórios pelo Brasil.</p>
 
           <div className="pricing-card-full">
-            <p className="pricing-label">Acesso completo por</p>
-            <p className="pricing-installment">pagamento único de</p>
-            <p className="pricing-price">R$ 97,00</p>
-            <a className="btn btn-red btn-checkout" onClick={(e) => { e.preventDefault(); setShowCheckoutModal(true) }} href="#">
+            <ul className="pricing-includes">
+              <li><i className="bi bi-check-circle-fill"></i> 5 módulos completos da formação</li>
+              <li><i className="bi bi-check-circle-fill"></i> Aulas gravadas, 100% online, no seu ritmo</li>
+              <li><i className="bi bi-check-circle-fill"></i> Acesso liberado assim que o pagamento é aprovado</li>
+              <li><i className="bi bi-check-circle-fill"></i> Garantia de 7 dias com reembolso integral</li>
+            </ul>
+            <p className="pricing-anchor">De <s>R$ 2.180,00</s></p>
+            <span className="pricing-badge">77% OFF</span>
+            <p className="pricing-label">Por apenas</p>
+            <p className="pricing-installment">12x de</p>
+            <p className="pricing-price">R$ 51,40</p>
+            <a className="btn btn-red btn-checkout" href={CHECKOUT_URL} target="_blank" rel="noreferrer">
               Quero Me Especializar
             </a>
-            <p className="pricing-annual">Acesso imediato aos 5 módulos, sem mensalidade</p>
+            <p className="pricing-annual">ou R$ 497,00 à vista</p>
           </div>
         </div>
       </section>
@@ -460,9 +468,6 @@ function App() {
         <div className="section-control">
           <div className="footer-inner">
             <div className="footer-row">
-              <div className="footer-logo">
-                <img src={logoSBC} alt="Sono Brasil Consultoria" className="logo-img logo-footer" />
-              </div>
               <div className="footer-links">
                 <a href="/termos-de-uso.html">Termos de uso</a>
                 <a href="/politica-privacidade.html">Política de privacidade</a>
@@ -479,20 +484,6 @@ function App() {
       </a>
 
       {/* ===== CONTACT MODAL ===== */}
-      {showCheckoutModal && (
-        <div className="modal-overlay" onClick={() => setShowCheckoutModal(false)}>
-          <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-            <button className="modal-close" onClick={() => setShowCheckoutModal(false)}>X</button>
-            <h1>Preencha seus dados para agendar:</h1>
-            <form onSubmit={(e) => { e.preventDefault(); alert('Agendamento enviado! Entraremos em contato.'); setShowCheckoutModal(false) }}>
-              <input type="text" placeholder="Digite seu nome" required />
-              <input type="email" placeholder="Digite seu e-mail" required />
-              <input type="tel" placeholder="Digite seu telefone" required />
-              <button type="submit" className="btn btn-primary btn-submit">AGENDAR CONSULTA</button>
-            </form>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

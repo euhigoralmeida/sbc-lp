@@ -369,21 +369,6 @@
   }
 }
 
-.footer-logo {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 14px 22px;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
-}
-
-.logo-footer {
-  height: 50px;
-  filter: none;
-}
-
 .navbar-actions {
   flex: 0 0 auto;
   display: flex;
@@ -1668,6 +1653,55 @@
   margin: 0 auto 50px;
 }
 
+.pricing-includes {
+  list-style: none;
+  padding: 0 0 28px;
+  margin: 0 0 28px;
+  width: 100%;
+  max-width: 440px;
+  text-align: left;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.pricing-includes li {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  font-size: 16px;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.85);
+  padding: 6px 0;
+}
+
+.pricing-includes i {
+  color: var(--check-green);
+  margin-top: 2px;
+}
+
+.pricing-anchor {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 8px;
+}
+
+.pricing-anchor s {
+  text-decoration-color: var(--red);
+  text-decoration-thickness: 2px;
+}
+
+.pricing-badge {
+  display: inline-block;
+  background: var(--red);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
 .pricing-label {
   font-family: 'Montserrat', sans-serif;
   font-size: 20px;
@@ -1995,7 +2029,7 @@
 .footer-row {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin-bottom: 30px;
 }
 
@@ -2610,9 +2644,6 @@
     gap: 10px;
   }
 
-  .logo-footer {
-    height: 38px;
-  }
 
   /* --- WhatsApp float mobile --- */
   .wpp-float {
