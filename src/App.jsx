@@ -157,9 +157,9 @@ function App() {
         <DottedSurface />
         <div className="section-control">
           <div className="hero-content">
-            <h2 className="hero-title">Torne-se Técnico em Polissonografia</h2>
+            <h2 className="hero-title">Aprenda polissonografia antes que a concorrência apareça</h2>
             <p className="hero-subtitle">
-              A profissão da saúde em que falta gente qualificada no Brasil inteiro. Aprenda a conduzir exames do sono do zero, com quem opera laboratório de polissonografia há 15 anos e já capacitou equipes do Acre a Minas Gerais.
+              Polissonografia é uma das áreas da saúde com menos concorrência qualificada no Brasil. Aprenda com quem já capacitou serviços em sete estados.
             </p>
             <div className="hero-video">
               {heroVideoIndisponivel ? (
@@ -464,8 +464,8 @@ function App() {
                 <img src={logoSBC} alt="Sono Brasil Consultoria" className="logo-img logo-footer" />
               </div>
               <div className="footer-links">
-                <a href="/termos-de-uso">Termos de uso</a>
-                <a href="/politica-privacidade">Política de privacidade</a>
+                <a href="/termos-de-uso.html">Termos de uso</a>
+                <a href="/politica-privacidade.html">Política de privacidade</a>
               </div>
             </div>
             <p className="footer-copy">© 2026 Sono Brasil Consultoria – Todos os direitos reservados</p>

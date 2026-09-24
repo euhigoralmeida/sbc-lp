@@ -369,9 +369,19 @@
   }
 }
 
+.footer-logo {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 22px;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+}
+
 .logo-footer {
   height: 50px;
-  filter: brightness(0) invert(1);
+  filter: none;
 }
 
 .navbar-actions {
@@ -435,14 +445,14 @@
 
 .hero-title {
   font-family: 'Montserrat', sans-serif;
-  font-size: 60px;
+  font-size: 46px;
   font-weight: 600;
-  line-height: 63px;
+  line-height: 1.15;
   background: linear-gradient(90deg, var(--red) 10%, var(--blue));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  width: 56%;
+  width: 74%;
   margin-bottom: 0;
 }
 
@@ -2168,8 +2178,8 @@
   }
 
   .hero-title {
-    font-size: 40px;
-    line-height: 1.15;
+    font-size: 32px;
+    line-height: 1.2;
     width: 90%;
     margin-bottom: 4px;
   }
@@ -2644,8 +2654,8 @@
   }
 
   .hero-title {
-    font-size: 30px;
-    line-height: 1.2;
+    font-size: 26px;
+    line-height: 1.25;
     width: 100%;
   }
 
